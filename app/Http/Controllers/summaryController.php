@@ -104,8 +104,6 @@ class summaryController extends Controller
          
         }
        
-      
-
         if((isset($start)) and (isset($finish))){
 
           $start = new Datetime($start);

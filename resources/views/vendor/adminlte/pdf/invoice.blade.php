@@ -90,7 +90,7 @@ if (isset($_GET['id_attr_tours'])) {
 <body>
 <header class="clearfix">
     <div id="logo">
-        <img src="https://www.heavydeveloper.me/front/images/site/mano.png">
+        <img src="https://g.foolcdn.com/image/?url=https%3A%2F%2Fg.foolcdn.com%2Feditorial%2Fimages%2F805662%2Fartificial-intelligence-robotics-ai-touchscreen.jpg&op=resize&w=1200&h=630" alt="test">
     </div>
     <div class="div1">Reporte <span
                 style="float: right; font-size: 22px">Balance: {{ number_format($totalfinal, 2, '.', ',') }} {{$divisa->value}}</span>

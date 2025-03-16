@@ -144,11 +144,9 @@ class pdfController extends Controller
             }else {
                 $summary = summary::where('created_at','<=',$hoy)->where('future','=',1)->get();
             }
-
-
         }
 
-
+        
         foreach ($summary as $s) {
           $name_account = account::find($s->account_id);
           $s->setAttribute('name_account',$name_account->name);
@@ -262,9 +260,15 @@ class pdfController extends Controller
 
       $r=(new summaryController)->pass($act='pdf');
       if($r>0){
+      
         $hoy = new DateTime('now');
-
+        // $hoy = $hoy->format('Y-m-d H:i:s');
         $summary = summary::where('created_at','>',$hoy)->get();
+       
+        // if($summary->count()== 0){
+        //   return 'no hay registros';
+        // }
+
         // $summary = summary::all();
         $categories = categories::all();
         $atributos = attributes::all();
@@ -351,11 +355,14 @@ class pdfController extends Controller
 
           $summary = summary::whereBetween('created_at', [$hoy, $start])->where($filter)->get();
         }else{
-          dd($filter);
-          $summary = summary::where('created_at','>',$hoy)->where($filter)->get();
+
+          if($filter) {
+            $summary = summary::where('created_at','>',$hoy)->where($filter)->get();
+          } else {
+            $summary = summary::where('created_at','>',$hoy)->get();
+          }
 
         }
-
 
         foreach ($summary as $s) {
           $name_account = account::find($s->account_id);
